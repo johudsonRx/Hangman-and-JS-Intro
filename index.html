@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="utf-8">
+	<title>NFL Hangman</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="container">
+     <div class="row">
+      <div class="col-sm-4">
+      
+       
+       </div>
+     <div class="col-sm-8">
+     <img src="http://static.nfl.com/static/content//public/static/img/navigation/shields/header-shield.png" style="left:-8pc; position: relative;top: 8pc;">
+     <h1 style="font-size: 72px">NFL Hangman</h1>
+     <h3 style="font-size: 35px">By Josh Hudson</h3>
+     <p id="letterline"  style="font-size: 50px;"></p>
+     
+     <p id="guesses">Guesses </p>
+     <p id="lettersguessed"></p>
+     </div>
+     
+ </div>
+</div> 
+    
+
+<script>
+
+	
+	
+     var nfl = ["cardinals", "bears", "packers", "redskins", "eagles","steelers", "rams", "Browns", "colts","chiefs","chargers","broncos", "patriots", "raiders", "titans","bills", "vikings", "falcons", "dolphins", "saints","bengals", "seahawks", "buccaneers","panthers", "jaguars", "ravens", "texans"];
+
+var teamName;
+var guessesLeft = 6;
+var toString = nfl.toString();
+     
+
+     function chooseWord () {
+   
+   // Returns random word from the nfl array
+    return nfl[Math.floor(Math.random() * nfl.length)];
+}
+
+teamName=chooseWord();
+  // Gets blanks for the chosen word
+function blanksFromAnswer () {
+    
+    var result = []; 
+    
+    for (var i = 0; i < teamName.length; i++) {
+    result.push("_");
+
+	}
+    return result;
+}
+
+
+var displayName=blanksFromAnswer();
+
+// Store the input from the user in this variable.
+
+var userGuess;
+
+document.onkeyup = function(event) {
+	userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+//	alert("You guessed " + userGuess);
+	addLettertoAnswer(userGuess);
+	console.log(displayName);
+}
+
+
+   function addLettertoAnswer(letter){	
+
+	for(var i=0;i<teamName.length;i++)
+	{
+//		console.log(teamName.length, i, letter, teamName, teamName.charAt(i));
+		// Writing the letter guessed if it is the correct letter
+		if(teamName.charAt(i)==letter){
+		displayName[i]=letter;
+
+       // If not, number of guesses decreaes
+		}
+        else {
+           guessesLeft--;
+        }
+		document.getElementById("letterline").innerHTML = displayName;
+       
+		}
+         
+	  }
+	
+
+
+  
+
+console.log(teamName);
+console.log(displayName);
+console.log(userGuess);
+// addLettertoAnswer('e');
+// addLettertoAnswer('a');
+// addLettertoAnswer('t');
+document.getElementById("letterline").innerHTML = displayName;
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
