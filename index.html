@@ -1,129 +1,83 @@
+<!-- Step 1: Create the Layout. -->
+<!-- Step 2: Flag key sections with specific id names. These will be replaced by Javascript -->
+<!-- Step 2: Link to Javascript (at end of the file) -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta charset="utf-8">
-	<title>NFL Hangman</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<meta charset="UTF-8">
+	<title>Coding Bootcamp - Hangman</title>
+
+	<!-- Bootstrap is used to make game look nicer -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="assets\css\style.css">
+
 
 </head>
 <body>
-    <div class="container">
-     <div class="row">
-      <div class="col-sm-4">
-      
-       
-       </div>
-     <div class="col-sm-8">
-     <img src="http://static.nfl.com/static/content//public/static/img/navigation/shields/header-shield.png" style="left:-8pc; position: relative;top: 8pc;">
-     <h1 style="font-size: 72px">NFL Hangman</h1>
-     <h3 style="font-size: 35px">By Josh Hudson</h3>
-     <p id="letterline"  style="font-size: 50px;"></p>
-     
-     <p id="guesses">Guesses </p>
-     <p id="lettersguessed"></p>
-     </div>
-     
- </div>
-</div> 
-    
-
-<script>
-
 	
-	
-     var nfl = ["cardinals", "bears", "packers", "redskins", "eagles","steelers", "rams", "Browns", "colts","chiefs","chargers","broncos", "patriots", "raiders", "titans","bills", "vikings", "falcons", "dolphins", "saints","bengals", "seahawks", "buccaneers","panthers", "jaguars", "ravens", "texans"];
+	<!-- Bootstrap Container will hold everything -->
+	<div class="container">
+		<!-- Jumbotron holds the title section -->
+		<div class="jumbotron-fluid">
+			<div class="container-fluid">
+			 <div class="row">
+					 <div class="col-lg-4 col-md-4 col-sm-4">
+							
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4">
+					<h1>Game of Thrones</h1>
+					<h2>Hangman</h2> 
+					<small>Press any key to begin playing...</small>
+				</div>
+				    <div class="col-lg-4 col-md-4 col-sm-4">
 
-var teamName;
-var guessesLeft = 6;
-var toString = nfl.toString();
-     
+				    </div>
+				
+			  </div>
+               <div class="row">
+					 <div class="col-lg-4 col-md-4 col-sm-4">
+							
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4">
+					   <h3><strong>Word to Guess</strong></h3>
+				</div>
+				    <div class="col-lg-4 col-md-4 col-sm-4">
 
-     function chooseWord () {
-   
-   // Returns random word from the nfl array
-    return nfl[Math.floor(Math.random() * nfl.length)];
-}
+				    </div>
+					
+						
+					</div>
+					<div class="row">
+					 <div class="col-lg-4 col-md-4 col-sm-4">
+							
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-4">
+					<h3 id="wordblanks">_ _ _ _ _ _ _ _ _ </h3>	
+				</div>
+				    <div class="col-lg-4 col-md-4 col-sm-4">
 
-teamName=chooseWord();
-  // Gets blanks for the chosen word
-function blanksFromAnswer () {
-    
-    var result = []; 
-    
-    for (var i = 0; i < teamName.length; i++) {
-    result.push("_");
-
-	}
-    return result;
-}
-
-
-var displayName=blanksFromAnswer();
-
-// Store the input from the user in this variable.
-
-var userGuess;
-
-document.onkeyup = function(event) {
-	userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-//	alert("You guessed " + userGuess);
-	addLettertoAnswer(userGuess);
-	console.log(displayName);
-}
-
-
-   function addLettertoAnswer(letter){	
-
-	for(var i=0;i<teamName.length;i++)
-	{
-//		console.log(teamName.length, i, letter, teamName, teamName.charAt(i));
-		// Writing the letter guessed if it is the correct letter
-		if(teamName.charAt(i)==letter){
-		displayName[i]=letter;
-
-       // If not, number of guesses decreaes
-		}
-        else {
-           guessesLeft--;
-        }
-		document.getElementById("letterline").innerHTML = displayName;
-       
-		}
-         
-	  }
-	
+				    </div>
+				   </div>
 
 
-  
-
-console.log(teamName);
-console.log(displayName);
-console.log(userGuess);
-// addLettertoAnswer('e');
-// addLettertoAnswer('a');
-// addLettertoAnswer('t');
-document.getElementById("letterline").innerHTML = displayName;
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-</script>
-
+                    <div class="row">
+				    <strong>Wrong Guesses: </strong> <span id="wrongGuesses"></span>
+ 					</div>
+ 					<div class="row">
+				    <strong>Guesses Left: </strong> <span id="guessesLeft">9</span>
+				    </div>
+				    <div class="row">
+				    <strong>Wins: </strong> <span id="winCounter">0</span>
+				    </div>
+				    <div class="row">
+				    <strong>Losses: </strong> <span id="lossCounter">0</span>
+				    </div>
+			</div>
+		</div>
+    </div>
+		
+	<script src="logic.js"></script>
 </body>
 </html>
-

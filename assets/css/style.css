@@ -1,0 +1,44 @@
+.jumbotron-fluid{
+  background-image: url('http://4.bp.blogspot.com/-GPJT1_lZv9w/Vo5zL47PljI/AAAAAAAADgY/xHW74qw3g9Y/s1600/gotwallpaper.png');
+  background-size: cover;
+  background-position: center ;
+  background-image: no-repeat;
+  height: 60pc;
+ }
+
+ h1 {
+ 	font-size: 72px;
+ 	color: white;
+ }
+
+h2 {
+	position: relative;
+    left: 3pc;
+    color: white;
+}
+
+small{
+	position: relative;
+	left: 2pc;
+	color: white;
+}
+
+strong {
+	color: white;
+}
+
+#winCounter {
+	color: white;
+}
+
+#lossCounter {
+	color: white;
+}
+
+#guessesLeft {
+	color: white;
+}
+
+#wrongGuesses {
+color: white;
+}
