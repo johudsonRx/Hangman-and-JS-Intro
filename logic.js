@@ -9,37 +9,37 @@ var wrongGuesses = []; // Holds all of the wrong guesses
 // Game counters
 var winCounter  = 0;
 var lossCounter = 0;
-var numGuesses  = 12;
+var numGuesses;
+var theme = new Audio('theme.mp3');
 
+theme.play();
 
-// startGame()
-// Its how we we will start and restart the game. 
+// Function for starting and restarting the game
 function startGame() {
   // Reset the guesses back to 0
-  numGuesses = 0;
+  numGuesses = 15;
 
-  chosenWord = gameOfThrones[Math.floor(Math.random() * wordsList.length)]; // solution is chosen randomly from wordList
+  chosenWord = gameOfThrones[Math.floor(Math.random() * gameOfThrones.length)]; // solution is chosen randomly from wordList
   lettersInChosenWord = chosenWord.split(""); // the word is broken into individual letters
-  numBlanks = lettersInChosenWord.length; // we cound the number of letters in the word
+  numBlanks = lettersInChosenWord.length; // counting the number of letters in the word
 
-  console.log(chosenWord); // We print the solution in console (for testing)
+  console.log(chosenWord); 
 
-  blanksAndSuccesses = []; // CRITICAL LINE - here we *reset* the guess and success array at each round. 
-  wrongGuesses = []; // CRITICAL LINE - here we *reset* the wrong guesses from the previous round.
+  blanksAndSuccesses = []; 
+  wrongGuesses = []; 
 
   // Fill up the blanksAndSuccesses list with appropriate number of blanks. This is based on number of letters in solution
   for (var i=0; i <numBlanks; i++){
     blanksAndSuccesses.push("_");
   }
 
-  console.log(blanksAndSuccesses); // print the initial blanks in console.
+  console.log(blanksAndSuccesses); 
 
 
-  // Reprints the guessesLeft to 9
   document.getElementById("guessesLeft").innerHTML = numGuesses;
   
   // Prints the blanks at the beginning of each round in the HTML
-  document.getElementById("letterline").innerHTML= blanksAndSuccesses.join(" ");
+  document.getElementById("wordblanks").innerHTML= blanksAndSuccesses.join(" ");
 
   // Clears the wrong guesses from the previous round
   document.getElementById('wrongGuesses').innerHTML = wrongGuesses.join(" ");
@@ -90,7 +90,7 @@ function roundComplete(){
 
   // Update the HTML to reflect the new number of guesses. Also update the correct guesses.
   document.getElementById("guessesLeft").innerHTML= numGuesses;
-  document.getElementById("letterline").innerHTML = blanksAndSuccesses.join(" "); // This will print the array of guesses and blanks onto the page
+  document.getElementById("wordblanks").innerHTML = blanksAndSuccesses.join(" "); // This will print the array of guesses and blanks onto the page
   document.getElementById("wrongGuesses").innerHTML = wrongGuesses.join(" "); // this will print the wrong guesses onto the page.
 
   // If we have gotten all the letters to match the solution... 
@@ -107,7 +107,7 @@ function roundComplete(){
   else if(numGuesses == 0) {
     lossCounter++;   // add to the loss counter 
     alert("You lose"); // give the user an alert
-
+    alert("The character was" + " " + chosenWord);
     // Update the loss counter in the HTML
     document.getElementById("lossCounter").innerHTML= lossCounter; 
     startGame(); // restart the game
@@ -123,5 +123,10 @@ startGame();
 document.onkeyup = function(event) {
   letterGuessed = String.fromCharCode(event.keyCode).toLowerCase(); // converts all key clicks to lowercase lettesr
   
-  checkLetters(letterGuessed); // runs the code to check for correctness 
-  roundComplete()
+  checkLetters(letterGuessed);
+  roundComplete();
+ 
+ }
+
+
+  

@@ -13,12 +13,15 @@
 
 	<link rel="stylesheet" type="text/css" href="assets\css\style.css">
 
+	<link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative" rel="stylesheet">
+
+    
 
 </head>
 <body>
 	
 	<!-- Bootstrap Container will hold everything -->
-	<div class="container">
+
 		<!-- Jumbotron holds the title section -->
 		<div class="jumbotron-fluid">
 			<div class="container-fluid">
@@ -29,7 +32,8 @@
 					<div class="col-lg-4 col-md-4 col-sm-4">
 					<h1>Game of Thrones</h1>
 					<h2>Hangman</h2> 
-					<small>Press any key to begin playing...</small>
+					<h4 style="color: white;">*The space button is included in some character names</h4>
+					<small id="direction">Press any key to begin playing...</small>
 				</div>
 				    <div class="col-lg-4 col-md-4 col-sm-4">
 
@@ -41,7 +45,7 @@
 							
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-4">
-					   <h3><strong>Word to Guess</strong></h3>
+					   <h3 id="theWord"><strong>Word to Guess</strong></h3>
 				</div>
 				    <div class="col-lg-4 col-md-4 col-sm-4">
 
@@ -62,22 +66,23 @@
 				   </div>
 
 
-                    <div class="row">
+                    <div class="row" id="wrongGuess">
 				    <strong>Wrong Guesses: </strong> <span id="wrongGuesses"></span>
  					</div>
- 					<div class="row">
+ 					<div class="row" id="guessesLeft">
 				    <strong>Guesses Left: </strong> <span id="guessesLeft">9</span>
 				    </div>
-				    <div class="row">
+				    <div class="row" id="wins">
 				    <strong>Wins: </strong> <span id="winCounter">0</span>
 				    </div>
-				    <div class="row">
+				    <div class="row" id="losses">
 				    <strong>Losses: </strong> <span id="lossCounter">0</span>
 				    </div>
 			</div>
 		</div>
-    </div>
+    
 		
 	<script src="logic.js"></script>
+
 </body>
 </html>
